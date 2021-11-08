@@ -20,9 +20,10 @@ public class CadastroController {
 
     @GetMapping
     public List<CadastroResumoDTO> exibirTodosCadastros(@RequestParam(required = false) Integer idade,
-                                                        @RequestParam(required = false) Boolean moraSo){
+                                                        @RequestParam(required = false) Boolean moraSo,
+                                                        @RequestParam(required = false) Boolean temPet){
         List<CadastroResumoDTO> cadastroResumoDTOS = new ArrayList<>();
-        for (Cadastro cadastroReferencia : cadastroService.retornarTodosCadastros(idade, moraSo)){
+        for (Cadastro cadastroReferencia : cadastroService.retornarTodosCadastros(idade, moraSo, temPet)){
             cadastroResumoDTOS.add(new CadastroResumoDTO(cadastroReferencia.getCpf(), cadastroReferencia.getNome(),
                     cadastroReferencia.getSobrenome()));
         }
@@ -31,11 +32,6 @@ public class CadastroController {
 
 
     /*
-     2 - Faça um metodo que retorna a lista inteira de cadastros ou filtrado por cadastros que:
-            *moram sozinhos,
-            *tem pet
-        ->nessa lista deve ser retornado apenas os campos ID, NOME e SOBRENOME.
-
      3 - faça um metodo para DELETAR um cadastro por id.
      4 - faça um metodo que retorna TODOS os dados de um usuario pesquisado pelo ID.
      */

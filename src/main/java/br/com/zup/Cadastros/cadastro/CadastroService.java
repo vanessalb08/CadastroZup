@@ -35,12 +35,15 @@ public class CadastroService {
         return data;
     }
 
-    public List<Cadastro> retornarTodosCadastros(Integer idade, Boolean moraSo){
+    public List<Cadastro> retornarTodosCadastros(Integer idade, Boolean moraSo, Boolean temPet){
         if (idade != null){
             return cadastroRepository.findAllByIdade(idade);
         }
         if (moraSo != null){
             return cadastroRepository.findAllByMoraSozinho(moraSo);
+        }
+        if(temPet != null){
+            return cadastroRepository.findAllByTemPet(temPet);
         }
         Iterable<Cadastro> cadastros = cadastroRepository.findAll();
         return (List<Cadastro>) cadastros;
