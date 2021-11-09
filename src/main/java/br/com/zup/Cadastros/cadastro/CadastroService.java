@@ -58,4 +58,9 @@ public class CadastroService {
         throw new RuntimeException("Cpf não cadastrado!");
     }
 
+    public void removerCadastro(String cpf){
+        Cadastro cadastroASerRemovido = pesquisarId(cpf);
+        cadastroRepository.delete(cadastroASerRemovido);
+    }
+
 }

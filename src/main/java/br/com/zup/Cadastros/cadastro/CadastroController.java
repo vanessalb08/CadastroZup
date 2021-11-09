@@ -2,6 +2,7 @@ package br.com.zup.Cadastros.cadastro;
 
 import br.com.zup.Cadastros.cadastro.dtos.CadastroResumoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public class CadastroController {
     private CadastroService cadastroService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public void cadastrarPessoa(@RequestBody Cadastro novoCadastro){
         cadastroService.cadastrarPessoa(novoCadastro);
     }
@@ -35,10 +37,14 @@ public class CadastroController {
         return cadastroService.pesquisarId(cpf);
     }
 
+    @DeleteMapping ("/{cpf}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletarCadastro (String cpf){
+        cadastroService.removerCadastro(cpf);
+    }
 
     /*
      3 - faça um metodo para DELETAR um cadastro por id.
-     4 - faça um metodo que retorna TODOS os dados de um usuario pesquisado pelo ID.
      */
 
 }
