@@ -30,6 +30,11 @@ public class CadastroController {
         return cadastroResumoDTOS;
     }
 
+    @GetMapping ("/{cpf}")
+    public Cadastro buscarCadastroId(@PathVariable String cpf){
+        return cadastroService.pesquisarId(cpf);
+    }
+
 
     /*
      3 - faça um metodo para DELETAR um cadastro por id.

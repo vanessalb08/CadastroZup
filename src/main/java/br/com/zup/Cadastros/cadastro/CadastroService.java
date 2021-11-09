@@ -49,4 +49,13 @@ public class CadastroService {
         return (List<Cadastro>) cadastros;
     }
 
+    public Cadastro pesquisarId(String cpf){
+        for (Cadastro cadastro : cadastroRepository.findAll()){
+            if (cadastro.getCpf().equals(cpf)){
+                return cadastro;
+            }
+        }
+        throw new RuntimeException("Cpf não cadastrado!");
+    }
+
 }
