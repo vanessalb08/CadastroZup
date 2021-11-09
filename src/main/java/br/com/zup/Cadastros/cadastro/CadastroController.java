@@ -39,7 +39,7 @@ public class CadastroController {
 
     @DeleteMapping ("/{cpf}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deletarCadastro (String cpf){
+    public void deletarCadastro (@PathVariable String cpf){
         cadastroService.removerCadastro(cpf);
     }
 
